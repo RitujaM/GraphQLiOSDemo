@@ -8,6 +8,6 @@
 import Foundation
 
 struct GraphQlClientProtocol {
-    static let token = "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"
+    static let token = "Your_Token"
     static let searchString = ""
 }
