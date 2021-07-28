@@ -11,12 +11,9 @@ Setup Steps:
 4. Added query in the GetRepoList.graphql file.
 5. Run Script to generate the Api.swift file 
 6. Created an Apollo client with Network.swift file and added authorization with the generated GitHub token, build.
-7. In the viewController file add an array of [subtypes of the particular query] for storing list of repositories.
+7. In the viewModel file add an array for storing list of repositories.
 8. Updated the array in loadRepoList() method.
-9. Added paginaition using scrollviewdidscrollview() method to check the offset and get more repos if its at the bottom of the table 
-
-
-
+9. Added paginaition using scrollviewdidscrollview() method to check the offset and get more repos if its the last cell of the table 
 
 Future Scope:
 1. The searchString will be an input for the user
