@@ -25,3 +25,6 @@ Future Scope:
         3. Packages
         4. Contributors
         5. Languages
+
+References:
+        https://www.apollographql.com/docs/ios/installation/
