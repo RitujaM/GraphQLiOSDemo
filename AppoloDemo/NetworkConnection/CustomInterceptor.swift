@@ -8,6 +8,7 @@
 import Foundation
 import Apollo
 
+//To include Authorization 
 class CustomInterceptor : ApolloInterceptor {
    
     func interceptAsync<Operation: GraphQLOperation>(

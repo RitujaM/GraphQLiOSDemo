@@ -18,6 +18,7 @@ class RepositoryListViewController: UIViewController {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
         viewModel.loadMoreReposIfTheyExist{ result in
             switch result{
             case.success(_):
@@ -54,6 +55,7 @@ class RepositoryListViewController: UIViewController {
         let contentHeight = scrollView.contentSize.height
 
         if(offSet > contentHeight - scrollView.frame.height * 4) && !self.isListLoading {
+            //call api when its at the bottom and is not loading
             viewModel.loadMoreReposIfTheyExist(){result in
                 switch result{
                 case.success(_):

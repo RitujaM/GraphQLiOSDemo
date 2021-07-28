@@ -10,8 +10,8 @@ import UIKit
 
 class RepoViewModel {
     
-    var repositories = [GetRepositoriesQuery.Data.Search.Edge.Node.AsRepository]()
-    var currentConnection : GetRepositoriesQuery.Data.Search.PageInfo?
+    var repositories = [GetRepositoriesQuery.Data.Search.Edge.Node.AsRepository]() //Array used to store the result repositories
+    var currentConnection : GetRepositoriesQuery.Data.Search.PageInfo? // used to store the current Page information. Used in pagination.
     
     func loadRepoList(from cursor: String?, completion: ((Result<Bool, Error>) -> Void)? = nil) {
         Network.shared.apollo
@@ -23,9 +23,10 @@ class RepoViewModel {
 
           switch result {
           case .success(let graphQLResult):
+            
             if let repoConnection = graphQLResult.data?.search.edges {
                 self.currentConnection = graphQLResult.data?.search.pageInfo
-
+                //Append result respositories to array.
                 repoConnection.forEach { edge in
                     guard let repository = edge?.node?.asRepository else { return }
                     self.repositories.append(repository)
@@ -34,13 +35,8 @@ class RepoViewModel {
             }
             
             if let errors = graphQLResult.errors {
-              let message = errors
-                    .map { $0.localizedDescription }
-                    .joined(separator: "\n")
-                
                 completion!(Result.failure(errors as! Error))
             }
-
 
           case .failure(let error):
             completion!(Result.failure(error))
@@ -49,7 +45,9 @@ class RepoViewModel {
     }
     
     func loadMoreReposIfTheyExist(completion: ((Result<Bool, Error>) -> Void)? = nil) {
+        
        guard let connection = self.currentConnection else {
+        //when you call the api first time
         self.repositories.removeAll()
         self.loadRepoList(from: nil){ result in
             switch result {
@@ -66,6 +64,7 @@ class RepoViewModel {
         return
       }
         self.loadRepoList(from: connection.endCursor){result in
+            //when loading the next page
             switch result {
             case .failure(let error):
                 completion!(Result.failure(error))
