@@ -9,5 +9,5 @@ import Foundation
 
 struct GraphQlClientProtocol {
     static let token = "Your_Token"
-    static let searchString = ""
+    
 }
