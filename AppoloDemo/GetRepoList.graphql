@@ -1,0 +1,22 @@
+query GetRepositories($page:String){
+  search(query: "GraphQL", after:$page, type: REPOSITORY, first: 10) {
+    edges {
+      node {
+        ... on Repository {
+          name
+          owner {
+            login
+            avatarUrl
+          }
+          stargazers {
+            totalCount
+          }
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
