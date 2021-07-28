@@ -1,4 +1,4 @@
-# GraphiOSDemo
+# GraphQLiOSDemo
 
 A Small iPhone Application which gets repositories based on the search string. The name of the repo, owner login name, owner Avatar and number of starts. The results are displayed with pagination. 
 The application interfaces with Github V4 API. It Performs a search and displays a result.
