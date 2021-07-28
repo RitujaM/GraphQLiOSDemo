@@ -13,7 +13,7 @@ Setup Steps:
 6. Created an Apollo client with Network.swift file and added authorization with the generated GitHub token, build.
 7. In the viewController file add an array of [subtypes of the particular query] for storing list of repositories.
 8. Updated the array in loadRepoList() method.
-9. Added paginaition using scrollviewdidscrollview() method to check the offset and get more repos if its the last cell of the table 
+9. Added paginaition using scrollviewdidscrollview() method to check the offset and get more repos if its at the bottom of the table 
 
 
 
